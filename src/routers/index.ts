@@ -5,19 +5,23 @@ import Navbar from '../layout/components/Navbar.vue'
 import NotFound from '../view/404/index.vue'
 import GoodsList from '../view/goods/goodsList/index.vue'
 import Classify from '../view/goods/classify/index.vue'
-const routes:Array<RouteRecordRaw> = [
+
+
+const routes:Array<RouteRecordRaw & {icon: string}> = [
   {
     path: '/',
     component: goodsList,
-    name: 'shabi'
+    icon: ''
   },
   {
     path: '/404',
-    component: NotFound
+    component: NotFound,
+    icon: ''
   },
   {
     path: '/goodsList',
     component: layout,
+    icon: 'Location',
     name: '商品',
     children: [
       {
@@ -41,6 +45,7 @@ const router = createRouter({
 })
 
 router.beforeEach((e, from, next) => {
+  // dispatch('route/addView', route)
   next()
 })
 

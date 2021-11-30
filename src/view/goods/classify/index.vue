@@ -1,5 +1,6 @@
 <template>
   111111
+  <input>
 </template>
 
 <script setup lang="ts">

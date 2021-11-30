@@ -12,6 +12,16 @@
   resolved "https://registry.yarnpkg.com/@element-plus/icons/-/icons-0.0.11.tgz#9b187c002774548b911850d17fa5fc2f9a515f57"
   integrity sha512-iKQXSxXu131Ai+I9Ymtcof9WId7kaXvB1+WRfAfpQCW7UiAMYgdNDqb/u0hgTo2Yq3MwC4MWJnNuTBEpG8r7+A==
 
+"@icon-park/svg@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@icon-park/svg/-/svg-1.3.5.tgz#7c974f2126f81da08574b81b45d5ea8531ddf866"
+  integrity sha512-8CE71ZHj5myxNZHiccoUL7ohRUOkKDAhPNwAIh8+6UJKH0RabTP3yj3cKJ3/gsHSrDOGpzMkKdjYI+3XSPYyrQ==
+
+"@icon-park/vue-next@^1.3.5":
+  version "1.3.5"
+  resolved "https://registry.yarnpkg.com/@icon-park/vue-next/-/vue-next-1.3.5.tgz#4c9cbe6c77c4f4dadbe60fd26b86b10ed4ad186b"
+  integrity sha512-alB051w2HKBcSo4hzKgWwLLoPCZIUwiaHEW5d2QmMUNefamKPIAt1JZ7heiJahRs5KN+1/Dkj+L9e8/2ccZsGw==
+
 "@popperjs/core@^2.10.2":
   version "2.10.2"
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"

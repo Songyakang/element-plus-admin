@@ -3,13 +3,20 @@
 </template>
 
 <script setup lang="ts">
-import { defineComponent } from 'vue'
-import { useRouter, useRoute } from 'vue-router'
+import { defineComponent, watch, provide, ref } from 'vue'
+import { useRouter, useRoute, onBeforeRouteUpdate } from 'vue-router'
 import router from './routers'
 const routerPath = useRoute().path
+const isCollapse = ref<boolean>(false)
+const defaultActive = ref<string>('')
+const defaultOpened = ref<string[]>([])
+provide('isCollapse', isCollapse)
+provide('defaultActive', defaultActive)
+provide('defaultOpened', defaultOpened)
 </script>
 
 <style lang='less' scoped>
+@import url('./style/flex.css');
 *, body{
   padding: 0;
   margin: 0;

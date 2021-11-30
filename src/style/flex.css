@@ -1,0 +1,69 @@
+.flex-center-center{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+.flex-row-center-bottom-nowrap{
+	display: flex;
+	justify-content: center;
+	align-items: flex-end;
+	flex-flow: row nowrap;
+}
+.flex-row-start-center-nowrap{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+.flex-row-between-center-nowrap{
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	flex-flow: row nowrap;
+}
+.flex-row-around-center-nowrap{
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-flow: row nowrap;
+}
+.flex-row-between-baseline{
+	display: flex;
+	justify-content: space-between;
+	align-items: baseline;
+}
+.flex-row-end-center-nowrap{
+	display: flex;
+	justify-content: flex-end;
+	align-items: center;
+	flex-flow: row nowrap;
+}
+.flex-row-start-start-nowrap{
+	display: flex;
+	justify-content: flex-start;
+	align-items: flex-start;
+	flex-flow: row nowrap;
+}
+.flex-column-center-center-nowrap{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-flow: column nowrap;
+}
+.flex-column-start-center-nowrap{
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-flow: column nowrap;
+}
+.flex-1{
+	flex: 1;
+}
+.line-clamp-2{
+	text-overflow: -o-ellipsis-lastline;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	display: -webkit-box;
+	-webkit-line-clamp: 2;
+	line-clamp: 2;
+	-webkit-box-orient: vertical;
+}

@@ -1,6 +1,12 @@
 <template>
   <div class="container">
-    <div class="proName">{{ appName }}</div>
+    <div class="proName">
+      <div @click="changeCollapse" style="cursor: pointer;">
+        <MenuUnfold v-if='isCollapse' theme="filled" size='16'/>
+        <MenuFold v-else theme="filled" size='16'/>
+      </div>
+      
+    </div>
     <div class="procontainer">
       <div class="setting">
         <div class="versions">
@@ -51,12 +57,18 @@
 </template>
 
 <script lang='ts'>
-import {ref} from 'vue'
+import {ref, provide, inject} from 'vue'
+import {MenuUnfold, MenuFold} from '@icon-park/vue-next'
 export default{
+  components:{
+    MenuUnfold,
+    MenuFold
+  },
   setup(){
     const order = ref<[]>([])
     const appName = ref<string>('卷跑')
     const name = ref<string>('name')
+    const isCollapse = inject<any>('isCollapse')
     const go = (url: string):void => {
       console.log(url)
     }
@@ -66,13 +78,18 @@ export default{
     const cleanCache = (e: any):void => {
       console.log(e)
     }
+    const changeCollapse = () => {
+      isCollapse.value = !isCollapse.value
+    }
     return {
       order,
       appName,
       name,
+      isCollapse,
       go,
       handleCommand,
-      cleanCache
+      cleanCache,
+      changeCollapse
     }
   }
 }
@@ -80,9 +97,10 @@ export default{
 
 <style lang="less" scoped>
 .container {
-  padding: 20px 15px;
+  padding: 10px 15px;
   color: rgb(60, 60, 60);
   background: #fff;
+  border-left: 1px solid #f2f2f2;
 }
 .proName {
   float: left;

@@ -1,6 +1,7 @@
 <template>
   {{state.user.checkoutStatus}} 
   <button @click="changeState">click</button>
+  <input>
 </template>
 
 <script setup lang="ts">
