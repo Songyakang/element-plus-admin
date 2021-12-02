@@ -5,6 +5,7 @@ import Navbar from '../layout/components/Navbar.vue'
 import NotFound from '../view/404/index.vue'
 import GoodsList from '../view/goods/goodsList/index.vue'
 import Classify from '../view/goods/classify/index.vue'
+import ToodoList from '../view/goods/toodoList/index.vue'
 
 
 const routes:Array<RouteRecordRaw & {icon: string}> = [
@@ -33,6 +34,11 @@ const routes:Array<RouteRecordRaw & {icon: string}> = [
         path: '/goodsClassify',
         component: Classify,
         name: '商品分类'
+      },
+      {
+        path:"/toodolist",
+        component:ToodoList,
+        name: '测试todolist'
       }
     ]
   }
