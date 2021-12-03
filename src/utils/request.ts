@@ -17,6 +17,7 @@ http.interceptors.response.use((res) => {
   }
   if (res.data.code === 401) {
     router.push({ path: '/login' })
+    return Promise.reject(res.data)
   } else if (res.data.code === 200) {
     return res.data
   } else {
