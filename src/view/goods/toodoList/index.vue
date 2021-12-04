@@ -15,7 +15,7 @@
               {{item}}
             </el-col>
             <el-col :span="6">
-              <el-icon-CircleCloseFilled :size="10" @click="remove(item)"></el-icon-CircleCloseFilled>
+              <el-icon size="16" @click="remove(item)" ><el-icon-CircleCloseFilled ></el-icon-CircleCloseFilled></el-icon>
             </el-col>
           </el-row>
       </template>
