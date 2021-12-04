@@ -14,8 +14,12 @@
           <el-icon class="close" @click.stop="remove(item)"><Close /></el-icon>
         </div>
       </div>
-
+      <!-- <el-breadcrumb class="breadcrumb" :separator-icon="ArrowRight">
+        <el-breadcrumb-item>promotion detail</el-breadcrumb-item>
+        <el-breadcrumb-item>{{tabsKey}}{{breadcrumbTwo}}</el-breadcrumb-item>
+      </el-breadcrumb> -->
       <div class="content">
+        
         <router-view v-slot='{Component}'>
           <KeepAlive>
             <component :is='Component'></component>
@@ -31,8 +35,9 @@ import {KeepAlive, getCurrentInstance, computed, ref, onMounted, provide, inject
 import {useStore} from 'vuex'
 import Layout from './components/layout.vue'
 import Navbar from './components/Navbar.vue'
-import {Close} from '@element-plus/icons'
+import {Close, ArrowRight} from '@element-plus/icons'
 import {useRouter, useRoute} from 'vue-router'
+import {routes} from '../routers/index'
 const {state, dispatch} = useStore()
 const location = useRouter()
 const options = useRoute()
@@ -48,8 +53,10 @@ onMounted(() => {
 const routeList = computed((e) => {
   return state.route.items
 })
+const breadcrumbTwo = computed((e) => {
+  console.log(routes.map(e => e.name))
+})
 const remove = (item) => {
-  console.log('log', item)
   dispatch('route/removeItem', item).then(e => {
     console.error(state.route)
     instance?.proxy?.$forceUpdate()
@@ -88,9 +95,11 @@ const go = (url: any) => {
     }
   }
 }
-
+.breadcrumb{
+  margin: 10px;
+}
 .router-list{
-  overflow-x: scroll;
+  overflow-x: hidden;
   background: #fff;
   border-top: 1px solid #f2f2f2;
   white-space: nowrap;

@@ -41,6 +41,20 @@ const routes:Array<RouteRecordRaw & {icon: string}> = [
         name: '测试todolist'
       }
     ]
+  },
+  {
+    path: '/table',
+    component: layout,
+    icon: 'Location',
+    name: '表格',
+    redirect: '/table/index',
+    children: [
+      {
+        path: '/table/index',
+        component: ()  => import('../view/table/index.vue'),
+        name: '高级表格'
+      }
+    ]
   }
 ]
 
