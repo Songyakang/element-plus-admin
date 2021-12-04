@@ -58,7 +58,8 @@
 
 <script lang='ts'>
 import {ref, provide, inject} from 'vue'
-import {MenuUnfold, MenuFold} from '@icon-park/vue-next'
+import {MenuUnfold, MenuFold} from '@icon-park/vue-next';
+import { useRouter } from "vue-router"
 export default{
   components:{
     MenuUnfold,
@@ -68,12 +69,16 @@ export default{
     const order = ref<[]>([])
     const appName = ref<string>('卷跑')
     const name = ref<string>('name')
-    const isCollapse = inject<any>('isCollapse')
+    const isCollapse = inject<any>('isCollapse');
+    const router = useRouter();
     const go = (url: string):void => {
       console.log(url)
     }
     const handleCommand = (e: any):void => {
       console.log(e)
+      if(e == 4){
+        router.push("/user/login")
+      }
     }
     const cleanCache = (e: any):void => {
       console.log(e)
