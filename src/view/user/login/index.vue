@@ -1,32 +1,34 @@
 <template>
   <div class="login_bg">
-    <div class="login_box">
-      <div class="title">Element-plus-admin</div>
-      <div class="form_login_user">
-        <el-form hide-required-asterisk :model="state" :rules="rules" ref="loginFormRef" class="demo-ruleForm">
-          <el-form-item prop="userName">
-            <el-input :prefix-icon="User" v-model="userName" placeholder="用户名/手机号码" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item prop="passWord">
-            <el-input :prefix-icon="Lock" type="password" placeholder="请输入密码" show-password="true" v-model="passWord" autocomplete="off"></el-input>
-          </el-form-item>
-          <el-form-item prop="autoCode">
-            <div class="autoCode_form">
-              <el-input v-model.number="autoCode" placeholder="请输入验证码" ></el-input>
-              <div class="security_form">xxxx</div>
-            </div>
-          </el-form-item>
-          <el-checkbox v-model="isChecked">记住密码</el-checkbox>
-          <el-form-item>
-            <el-button :loading="loading" class="form_button" round type="primary" @click="submitForm('state')">登 录</el-button>
-          </el-form-item>
-        </el-form>
+    <transition name="fade">
+      <div class="login_box">
+        <div class="title">Element-plus-admin</div>
+        <div class="form_login_user">
+          <el-form hide-required-asterisk :model="state" :rules="rules" ref="loginFormRef" class="demo-ruleForm">
+            <el-form-item prop="userName">
+              <el-input :prefix-icon="User" v-model="userName" placeholder="用户名/手机号码" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item prop="passWord">
+              <el-input :prefix-icon="Lock" type="password" placeholder="请输入密码" show-password="true" v-model="passWord" autocomplete="off"></el-input>
+            </el-form-item>
+            <el-form-item prop="autoCode">
+              <div class="autoCode_form">
+                <el-input :prefix-icon="Setting" v-model.number="autoCode" placeholder="请输入验证码" ></el-input>
+                <div class="security_form">xxxx</div>
+              </div>
+            </el-form-item>
+            <el-checkbox v-model="isChecked">记住密码</el-checkbox>
+            <el-form-item>
+              <el-button :loading="loading" class="form_button" round type="primary" @click="submitForm('state')">登 录</el-button>
+            </el-form-item>
+          </el-form>
+        </div>
+        <div class="forget_password">
+          <a href="">忘记密码</a>
+          <a href="">立即注册</a>
+        </div>
       </div>
-      <div class="forget_password">
-        <a href="">忘记密码</a>
-        <a href="">立即注册</a>
-      </div>
-    </div>
+    </transition>
   </div>
 </template>
 
@@ -34,7 +36,7 @@
 import { reactive,toRefs ,ref} from "vue";
 import { useRouter } from "vue-router"
 import {ElMessage} from "element-plus";
-import { Lock, User } from '@element-plus/icons'
+import { Lock, User ,Setting} from '@element-plus/icons'
 const state = reactive({
   userName:"",
   passWord:"",
@@ -144,5 +146,14 @@ const { userName,passWord,autoCode,autoCodeUrl ,isChecked,loading} = toRefs(stat
         text-decoration:none
       }
     }
+  }
+  .fade-enter-active,
+  .fade-leave-active {
+    transition: opacity 0.5s ease;
+  }
+
+  .fade-enter-from,
+  .fade-leave-to {
+    opacity: 0;
   }
 </style>
