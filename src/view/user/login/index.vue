@@ -5,10 +5,10 @@
       <div class="form_login_user">
         <el-form hide-required-asterisk :model="state" :rules="rules" ref="loginFormRef" class="demo-ruleForm">
           <el-form-item prop="userName">
-            <el-input prefix-icon="el-icon-user" v-model="userName" placeholder="用户名/手机号码" autocomplete="off"></el-input>
+            <el-input :prefix-icon="User" v-model="userName" placeholder="用户名/手机号码" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item prop="passWord">
-            <el-input prefix-icon="el-icon-lock" type="password" placeholder="请输入密码" show-password="true" v-model="passWord" autocomplete="off"></el-input>
+            <el-input :prefix-icon="Lock" type="password" placeholder="请输入密码" show-password="true" v-model="passWord" autocomplete="off"></el-input>
           </el-form-item>
           <el-form-item prop="autoCode">
             <div class="autoCode_form">
@@ -34,6 +34,7 @@
 import { reactive,toRefs ,ref} from "vue";
 import { useRouter } from "vue-router"
 import {ElMessage} from "element-plus";
+import { Lock, User } from '@element-plus/icons'
 const state = reactive({
   userName:"",
   passWord:"",
