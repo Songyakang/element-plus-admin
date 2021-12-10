@@ -26,4 +26,20 @@ const say = ({info}: {info: object}) => {
   console.log(info)
 }
 
-say(json)
+// say(json)
+
+const a: any = {
+  name: 'kang',
+  year: 23,
+  phone: '15199995555'
+}
+
+const b: any = {
+  name: '康'
+}
+
+for(let i in a){
+  !b.hasOwnProperty(i) && (b[i] = a[i])
+}
+
+console.log(b)
