@@ -71,16 +71,7 @@ const router = createRouter({
 
 router.beforeEach((to, from, next) => {
   // dispatch('route/addView', route)
-
-  let flag = getCookie("AuthorityToken");
-  if( to.path !== "/user/login" && !flag ){
-    next({
-      path:"/user/login"
-    });
-  }else{
-    next();
-  }
-
+  next();
 })
 
 export {

@@ -37,6 +37,7 @@ import { reactive,toRefs ,ref} from "vue";
 import { useRouter } from "vue-router"
 import {ElMessage} from "element-plus";
 import { Lock, User ,Setting} from '@element-plus/icons'
+import {login} from "@/api/user";
 const state = reactive({
   userName:"",
   passWord:"",
@@ -51,19 +52,16 @@ const router = useRouter();
 const loginFormRef=ref(null)
 
 const submitForm=(key:string):void=>{
-  loginFormRef.value.validate((valid) => {
+  loginFormRef.value.validate((valid:any) => {
     if (valid) {
-      if(state.userName=="admin" && state.passWord == "123456"){
-        state.loading = true
-        setTimeout(()=>{
-          state.loading = false
-          document.cookie = `AuthorityToken=${JSON.stringify({...state})}`
-          router.push("/goodsList")
-        },1000)
-      }else{
-        ElMessage.error("用户名或密码错误")
-      }
-      console.log(valid)
+      state.loading = true
+      login(state).then(res=>{
+        state.loading = false
+        if(res?.code == 0){
+            router.push("/goodsList")
+            ElMessage.success("登录成功")
+        }
+      })
     } else {
       console.log('error submit!!');
       return false;

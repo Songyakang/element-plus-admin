@@ -48,6 +48,7 @@ let tabsKey = inject<any>('defaultActive')
 onMounted(() => {
   console.log(tabsKey)
   tabsKey.value = options.path
+  dispatch("user/getUserInfo")
 })
 
 const routeList = computed((e) => {
