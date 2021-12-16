@@ -3,7 +3,6 @@ import router from '../routers/index'
 import { ElMessage  } from 'element-plus'
 
 const http = axios.create({
-  baseURL: process.env.VUE_APP_BASE_API,
   headers: {
     'Content-Type': 'application/json'
   },
@@ -17,7 +16,7 @@ http.interceptors.response.use((res) => {
   }
   if (res.data.code === 401) {
     router.push({ path: '/login' })
-  } else if (res.data.code === 200) {
+  } else if (res.data.code === 0) {
     return res.data
   } else {
     ElMessage({

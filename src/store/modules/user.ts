@@ -1,6 +1,11 @@
+import {getUserInfo} from "@/api/user";
+
 const state = () => ({
   items: [],
-  checkoutStatus: false
+  checkoutStatus: false,
+  data:{
+
+  }
 })
 
 const getters = { //类似计算属性
@@ -36,6 +41,15 @@ const actions = { //dispatch
   addStatus ({commit, state}, nums){
     // console.log(commit, state, nums)
     commit('CHANGE_STATUS', nums)
+  },
+  async getUserInfo({commit}){
+    let data = await getUserInfo();
+    console.log(data)
+    if(data?.code == 0){
+      commit("SETUSERINFO",data)
+    }else{
+      location.href = "/user/login"
+    }
   }
 }
 
@@ -50,6 +64,9 @@ const mutations = { //commit
   CHANGE_STATUS (state, data) {
     console.log(state, data)
     state.checkoutStatus = data
+  },
+  SETUSERINFO(state, data){
+    state.data = data
   }
 }
 
