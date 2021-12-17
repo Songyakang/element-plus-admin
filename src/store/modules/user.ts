@@ -44,7 +44,6 @@ const actions = { //dispatch
   },
   async getUserInfo({commit}){
     let data = await getUserInfo();
-    console.log(data)
     if(data?.code == 0){
       commit("SETUSERINFO",data)
     }else{
@@ -66,7 +65,7 @@ const mutations = { //commit
     state.checkoutStatus = data
   },
   SETUSERINFO(state, data){
-    state.data = data
+    state.data = data?.data ?? {}
   }
 }
 

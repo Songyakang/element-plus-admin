@@ -11,11 +11,8 @@ const http = axios.create({
 
 //  设置响应拦截器
 http.interceptors.response.use((res) => {
-  if (Object.hasOwnProperty.call(res.headers, 'token')) {
-    localStorage.token = res.headers.token
-  }
   if (res.data.code === 401) {
-    router.push({ path: '/login' })
+    router.push({ path: '/user/login' })
   } else if (res.data.code === 0) {
     return res.data
   } else {
@@ -27,14 +24,20 @@ http.interceptors.response.use((res) => {
     return Promise.reject(res.data)
   }
 }, function (error) {
+  let status = error.response.status;
+  if(status == 401){
+    ElMessage({
+      showClose: true,
+      message: error.response.data.msg,
+      type: 'error'
+    })
+    router.push({ path: '/user/login' })
+  }
   return Promise.reject(error)
 })
 
 //  设置请求拦截器
 http.interceptors.request.use((config) => {
-  if (config.url != '/admin/login') {
-    config.headers.token = localStorage.token //将token写入请求头内
-  }
   return config
 }, function (error) {
   return Promise.reject(error)
