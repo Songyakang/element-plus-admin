@@ -46,7 +46,7 @@
               <el-dropdown-menu>
                 <el-dropdown-item :command="1">基本资料</el-dropdown-item>
                 <el-dropdown-item :command="3">选择应用</el-dropdown-item>
-                <el-dropdown-item :command="4" divided>退 出</el-dropdown-item>
+                <el-dropdown-item :command="4">退 出</el-dropdown-item>
               </el-dropdown-menu>
             </template>
           </el-dropdown>
@@ -57,8 +57,11 @@
 </template>
 
 <script lang='ts'>
-import {ref, provide, inject} from 'vue'
-import {MenuUnfold, MenuFold} from '@icon-park/vue-next'
+import {ref, provide, inject,watch} from 'vue'
+import {MenuUnfold, MenuFold} from '@icon-park/vue-next';
+import { useRouter } from "vue-router"
+import {useStore} from "vuex";
+import {logout} from "@/api/user";
 export default{
   components:{
     MenuUnfold,
@@ -67,14 +70,27 @@ export default{
   setup(){
     const order = ref<[]>([])
     const appName = ref<string>('卷跑')
-    const name = ref<string>('name')
-    const isCollapse = inject<any>('isCollapse')
+    const name = ref<string>('')
+    const isCollapse = inject<any>('isCollapse');
+    const {state, _} = useStore()
+    const router = useRouter();
     const go = (url: string):void => {
       console.log(url)
     }
+    console.log(state.user)
     const handleCommand = (e: any):void => {
       console.log(e)
+      if(e == 4){
+        logout().then(res=>{
+          if(res?.code == 0){
+            router.push("/user/login")
+          }
+        })
+      }
     }
+    watch(state,(newState,oldState)=>{
+      name.value = newState.user?.data?.userName
+    })
     const cleanCache = (e: any):void => {
       console.log(e)
     }

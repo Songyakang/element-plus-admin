@@ -5,9 +5,15 @@ import Navbar from '../layout/components/Navbar.vue'
 import NotFound from '../view/404/index.vue'
 import GoodsList from '../view/goods/goodsList/index.vue'
 import Classify from '../view/goods/classify/index.vue'
+import ToodoList from '../view/goods/toodoList/index.vue'
 
 
 const routes:Array<RouteRecordRaw & {icon: string}> = [
+  {
+    path:"/user/login",
+    component:import("../view/user/login/index.vue"),
+    icon:""
+  },
   {
     path: '/',
     component: goodsList,
@@ -33,6 +39,11 @@ const routes:Array<RouteRecordRaw & {icon: string}> = [
         path: '/goodsClassify',
         component: Classify,
         name: '商品分类'
+      },
+      {
+        path:"/toodolist",
+        component:ToodoList,
+        name: '测试todolist'
       }
     ]
   },
@@ -58,13 +69,31 @@ const router = createRouter({
   routes: routes
 })
 
-router.beforeEach((e, from, next) => {
+router.beforeEach((to, from, next) => {
   // dispatch('route/addView', route)
-  next()
+  next();
 })
 
 export {
   routes
-} 
+}
+
+function getCookie(name) {
+  var prefix = name + "="
+  var start = document.cookie.indexOf(prefix)
+
+  if (start == -1) {
+    return null;
+  }
+
+  var end = document.cookie.indexOf(";", start + prefix.length)
+  if (end == -1) {
+    end = document.cookie.length;
+  }
+
+  var value = document.cookie.substring(start + prefix.length, end)
+  return unescape(value);
+}
+
 
 export default router
